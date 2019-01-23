@@ -23,6 +23,29 @@ def which(program):
                 return exe_file
 
 
+def parse_mac_rssi(raw_output):
+    found_macs = {}
+    for line in raw_output.decode('utf-8').split('\n'):
+        if line.strip() == '':
+            continue
+
+        dats = line.split()
+
+        if len(dats) == 3:
+            if ':' not in dats[0]:
+                continue
+            mac = dats[0]
+            if mac not in found_macs:
+                found_macs[mac] = []
+            rssi = float(dats[2])
+            found_macs[mac].append(rssi)
+
+    for key, value in found_macs.items():
+        found_macs[key] = float(sum(value)) / float(len(value))
+
+    return found_macs
+
+
 def scan(adapter, scantime, sort=False):
     try:
         tshark = which("tshark")
@@ -51,7 +74,8 @@ def scan(adapter, scantime, sort=False):
     ]
     run_tshark = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     output, _ = run_tshark.communicate()
-    print(command)
+    found_macs = parse_mac_rssi(output)
+    print(found_macs)
 
 
 
