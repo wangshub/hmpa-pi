@@ -1,4 +1,4 @@
-oui = {
+info = {
   "00:02:c2": "Net Vision Telecom",
   "fc:45:96": "COMPAL INFORMATION (KUNSHAN) CO., LTD.",
   "fc:62:b9": "ALPS ELECTRIC CO.,LTD.",

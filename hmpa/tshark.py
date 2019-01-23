@@ -2,6 +2,9 @@ import sys
 import os
 import platform
 import subprocess
+import time
+
+from . import oui
 
 
 def which(program):
@@ -23,8 +26,13 @@ def which(program):
                 return exe_file
 
 
+def _time_stamp():
+    return str(int(time.time()))
+
+
 def parse_mac_rssi(raw_output):
     found_macs = {}
+    found_devices = []
     for line in raw_output.decode('utf-8').split('\n'):
         if line.strip() == '':
             continue
@@ -40,10 +48,15 @@ def parse_mac_rssi(raw_output):
             rssi = float(dats[2])
             found_macs[mac].append(rssi)
 
-    for key, value in found_macs.items():
-        found_macs[key] = float(sum(value)) / float(len(value))
+    for mac, rssi in found_macs.items():
+        found_macs[mac] = float(sum(rssi)) / float(len(rssi))
+        device = {'company': oui.info[mac[:8]] if mac[:8] in oui.info else 'Unknown',
+                  'mac': mac,
+                  'rssi': found_macs[mac]}
+        found_devices.append(device)
 
-    return found_macs
+    return {'time': _time_stamp(),
+            'found_devices': found_devices}
 
 
 def scan(adapter, scantime, sort=False):
@@ -59,7 +72,7 @@ def scan(adapter, scantime, sort=False):
 
     # Scan with tshark
     command = [tshark, '-I', '-i', adapter, '-a',
-               'duration:' + scantime, '-w', '/tmp/tshark-temp']
+               'duration:' + str(scantime), '-w', '/tmp/tshark-temp']
     run_tshark = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     stdout, _ = run_tshark.communicate()
     print(command)
@@ -74,11 +87,10 @@ def scan(adapter, scantime, sort=False):
     ]
     run_tshark = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     output, _ = run_tshark.communicate()
-    found_macs = parse_mac_rssi(output)
-    print(found_macs)
-
+    devices = parse_mac_rssi(output)
+    return devices
 
 
 if __name__ == '__main__':
     adapter = 'wlan1'
-    scan(adapter, '10')
+    scan(adapter, 10)
