@@ -12,14 +12,3 @@ class Email(object):
         self.yag.send(to_user,
                       subject=title,
                       contents=contents)
-
-
-def send(user, password, host, port, to_user, title, contents):
-    """mail sender"""
-    yag = yagmail.SMTP(user=user,
-                       password=password,
-                       host=host,
-                       port=port)
-    yag.send(to_user,
-             subject=title,
-             contents=contents)

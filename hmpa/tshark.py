@@ -3,6 +3,7 @@ import os
 import platform
 import subprocess
 import time
+from datetime import datetime
 
 from . import oui
 
@@ -27,7 +28,7 @@ def which(program):
 
 
 def _time_stamp():
-    return int(time.time())
+    return str(datetime.now())
 
 
 def parse_mac_rssi(raw_output, sort=True):

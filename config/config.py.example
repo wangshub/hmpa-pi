@@ -10,3 +10,8 @@ email = {"host": "smtp.163.com",
 
 use_wechat = True
 serverchan = {"sckey": "xxxxxxxxxxxxxxxxxxxxx"}
+
+
+known_devices = {"94:65:2d:xx:xx:xx": "my cellPhone",
+                 "dc:a4:ca:xx:xx:xx": "my Mac",
+                 "b8:27:eb:xx:xx:xx": "my raspberry"}
