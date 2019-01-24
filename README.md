@@ -4,6 +4,10 @@
 
 临近春节回老家过年，家里没人，又不想安装摄像头监控，参考 [howmanypeoplearearound](https://github.com/schollz/howmanypeoplearearound) 写了一个监测脚本，当有手机或其他 Wi-Fi 设备在附近时，通过邮件或者微信提醒。
 
+<p align="center">
+    <img src="pics/raspberrypi.jpg" width="50%"/>
+</p>
+
 ## 特性
 
 - [x] Wi-Fi 设备扫描
@@ -16,7 +20,9 @@
 在 Wi-Fi 网络中，无线网卡是以广播模式发射信号的。当无线网卡将信息广播出去后，所有的设备都可以接收到该信息。将无线网卡设置为监听模式后，就可以捕获到该网卡接收范围的所有数据包。
 通过这些数据包，就可以扫描出附近 Wi-Fi 的网络内的设备与信号强度。
 
-![](./pics/monitor_mode.png)
+<p align="center">
+    <img src="./pics/monitor_mode.png"/>
+</p>
 
 ## 监听模式的网卡
 
