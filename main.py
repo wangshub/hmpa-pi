@@ -50,9 +50,7 @@ def job():
 
 
 if __name__ == '__main__':
+    schedule.every(1).minutes.do(job)
     while True:
-        job()
-    # schedule.every(1).minutes.do(job)
-    # while True:
-    #     schedule.run_pending()
-    #     time.sleep(1)
+        schedule.run_pending()
+        time.sleep(1)
