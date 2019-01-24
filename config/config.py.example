@@ -1,0 +1,12 @@
+
+adapter = 'wlan1'
+
+use_email = True
+email = {"host": "smtp.163.com",
+         "port": 465,
+         "user": "xxxxxxx@163.com",
+         "password": "xxxxxxxxxx",
+         "to_user": "xxxxxxxx@xxxx.com"}
+
+use_wechat = True
+serverchan = {"sckey": "xxxxxxxxxxxxxxxxxxxxx"}

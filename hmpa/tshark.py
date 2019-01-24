@@ -27,10 +27,10 @@ def which(program):
 
 
 def _time_stamp():
-    return str(int(time.time()))
+    return int(time.time())
 
 
-def parse_mac_rssi(raw_output):
+def parse_mac_rssi(raw_output, sort=True):
     found_macs = {}
     found_devices = []
     for line in raw_output.decode('utf-8').split('\n'):
@@ -55,11 +55,14 @@ def parse_mac_rssi(raw_output):
                   'rssi': found_macs[mac]}
         found_devices.append(device)
 
+    if sort:
+        found_devices.sort(key=lambda x: x['rssi'], reverse=True)
+
     return {'time': _time_stamp(),
             'found_devices': found_devices}
 
 
-def scan(adapter, scantime, sort=False):
+def scan(adapter, scantime, sort=True):
     try:
         tshark = which("tshark")
     except:
