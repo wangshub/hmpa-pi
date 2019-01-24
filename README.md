@@ -1,8 +1,8 @@
 # hmpa-pi
 
-在树莓派上，利用 Wireshark 扫描附近网络 WiFi 设备，并对扫描结果通过邮件或者微信进行推送。
+在树莓派上，利用 Wireshark 扫描附近网络 WiFi 设备，并对扫描结果通过邮件或者微信进行推送。
 
-临近春节回老家过年，家里没人，又不想安装摄像头监控，参考 [howmanypeoplearearound](https://github.com/schollz/howmanypeoplearearound) 写了一个监测脚本，当有手机或其他 Wi-Fi 设备在附近时，通过邮件或者微信提醒。
+临近春节回老家过年，家里没人，又不想安装摄像头监控，参考 [howmanypeoplearearound](https://github.com/schollz/howmanypeoplearearound) 写了一个监测脚本，当有手机或其他 Wi-Fi 设备在附近时，通过邮件或者微信提醒。
 
 ## 特性
 
@@ -56,7 +56,7 @@ newgrp wireshark
 
 ## 配置网卡
 
-如果刚好是 Rtl8192 + Raspberry Pi ，需要先卸载 `rtl8192` 驱动，再加载 `RTL8188` 驱动
+如果刚好是 Rtl8192 + Raspberry Pi ，需要先卸载 `rtl8192` 驱动，再加载 `RTL8188` 驱动
 
 ```bash
 #!/usr/bin/env bash
