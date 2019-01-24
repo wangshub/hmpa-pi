@@ -17,9 +17,9 @@ def brief_report(devices):
 
     for dev in all_devices:
         if dev['mac'] in list(config.known_devices.keys()):
-            content += '{name}    \n'.format(name=config.known_devices[dev['mac']])
+            content += '- {name}    \n'.format(name=config.known_devices[dev['mac']])
 
-    content += 'All Devices:    \n'
+    content += '\n\nAll Devices:    \n'
 
     for dev in all_devices:
         content += '- {mac} {rssi} {company} \n'.format(mac=dev['mac'],
@@ -32,6 +32,7 @@ def job():
     adapter = config.adapter
     devices = tshark.scan(adapter, 60)
     title, content = brief_report(devices)
+    print(content)
 
     if config.use_email:
         try:
