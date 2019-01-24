@@ -73,7 +73,7 @@ sudo iwconfig wlan1 mode monitor
 sudo ifconfig wlan1 up
 ```
 
-## 运行代码
+## 运行代码
 
 ### 下载代码
 ```bash
@@ -89,7 +89,7 @@ cp config/config.py.example config/config.py
 vi config/config.py
 ```
 
-参考配置
+参考配置
 
 ```python
 adapter = 'wlan1'
