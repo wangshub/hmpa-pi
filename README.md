@@ -2,7 +2,7 @@
 
 在树莓派上，利用 Wireshark 扫描附近网络 WiFi 设备，并对扫描结果通过邮件或者微信进行推送。
 
-临近春节回老家过年，家里没人，又不想安装摄像头监控，参考 [howmanypeoplearearound](https://github.com/schollz/howmanypeoplearearound) 写了一个监测脚本，当有手机或其他 Wi-Fi 设备在附近时，通过邮件或者微信提醒。
+临近春节回老家过年，家里没人，又不想安装摄像头监控，参考 [howmanypeoplearearound](https://github.com/schollz/howmanypeoplearearound) 写了一个监测脚本，当有手机或其它 Wi-Fi 设备在附近时，通过邮件或者微信提醒。
 
 <p align="center">
     <img src="pics/raspberrypi.jpg" width="50%"/>
@@ -62,22 +62,24 @@ newgrp wireshark
 
 ## 配置网卡
 
-如果刚好是 Rtl8192 + Raspberry Pi ，需要先卸载 `rtl8192` 驱动，再加载 `RTL8188` 驱动
+- 如果是支持监听模式的网卡，可以直接运行
 
-```bash
-#!/usr/bin/env bash
-uname -a
+- 如果刚好是 Rtl8192 + Raspberry Pi ，需要先卸载 `rtl8192` 驱动，再加载 `RTL8188` 驱动
 
-# disable rtl8192 driver
-sudo depmod 4.14.79-v7+
-sudo rmmod 8192cu
-sudo modprobe rtl8192cu
-
-# set RTL8188 monitor mode
-sudo ifconfig wlan1 down
-sudo iwconfig wlan1 mode monitor
-sudo ifconfig wlan1 up
-```
+    ```bash
+    #!/usr/bin/env bash
+    uname -a
+    
+    # disable rtl8192 driver
+    sudo depmod 4.14.79-v7+
+    sudo rmmod 8192cu
+    sudo modprobe rtl8192cu
+    
+    # set RTL8188 monitor mode
+    sudo ifconfig wlan1 down
+    sudo iwconfig wlan1 mode monitor
+    sudo ifconfig wlan1 up
+    ```
 
 ## 运行代码
 
@@ -173,4 +175,5 @@ More ...
 
 ## License
 
-MIT
+- MIT
+- 仅供学习和研究，切勿违法 
