@@ -20,7 +20,7 @@
 
 ## 监听模式的网卡
 
-部分支持监听模式的网卡
+一些支持监听模式的网卡
 
 > [wifi-adapter-that-supports-monitor-mode](https://github.com/schollz/howmanypeoplearearound#wifi-adapter-that-supports-monitor-mode)
 
@@ -56,7 +56,7 @@ newgrp wireshark
 
 ## 配置网卡
 
-如果刚好是 RTL8188 + raspberry pi ，需要先卸载 `rtl8192` 驱动，再加载 `RTL8188` 驱动
+如果刚好是 Rtl8192 + Raspberry Pi ，需要先卸载 `rtl8192` 驱动，再加载 `RTL8188` 驱动
 
 ```bash
 #!/usr/bin/env bash
@@ -121,6 +121,36 @@ python main.py
 - [Server 酱微信推送](http://sc.ftqq.com/3.version)，需要 Github 登录获取 `sckey`
 - yagmail 邮箱推送
 
+## 运行结果
+
+```text
+2019-01-24 07:37:01.211617 一共发现了 67 台设备
+
+Known Devices:
+- my cellPhone
+- my raspberry
+- my mac
+
+All Devices:
+- 00:e0:70:3e:xx:xx 14 DH TECHNOLOGY
+- 94:65:2d:91:xx:xx 14 OnePlus Technology (Shenzhen) Co., Ltd
+- dc:d9:16:7e:xx:xx -12 HUAWEI TECHNOLOGIES CO.,LTD
+- b8:27:eb:12:xx:xx -20 Raspberry Pi Foundation
+- 98:01:a7:eb:xx:xx -40 Apple, Inc.
+- 20:5d:47:44:xx:xx -44 vivo Mobile Communication Co., Ltd.
+- ac:b5:7d:5f:xx:xx -46 Liteon Technology Corporation
+- 04:03:d6:1f:xx:xx -47 Nintendo Co.,Ltd
+- d4:ee:07:55:xx:xx -48 HIWIFI Co., Ltd.
+- 44:6e:e5:63:xx:xx -51 HUAWEI TECHNOLOGIES CO.,LTD
+- 14:75:90:8d:xx:xx -51 TP-LINK TECHNOLOGIES CO.,LTD.
+- 34:96:72:1d:xx:xx -56 TP-LINK TECHNOLOGIES CO.,LTD.
+- d8:cb:8a:74:xx:xx -57 Micro-Star INTL CO., LTD.
+- 40:8d:5c:21:xx:xx -57 GIGA-BYTE TECHNOLOGY CO.,LTD.
+- 6c:59:40:25:xx:xx -58 SHENZHEN MERCURY COMMUNICATION TECHNOLOGIES CO.,LTD.
+
+More ...
+```
+
 ## TODO
 
 - [ ] 美化打印信息
@@ -133,3 +163,7 @@ python main.py
 - [schollz / howmanypeoplearearound](https://github.com/schollz/howmanypeoplearearound)
 - [derv82 / wifite2](https://github.com/derv82/wifite2)
 - [第 3 章 监听 WiFi 网络](http://www.tup.tsinghua.edu.cn/upload/books/yz/067209-01.pdf)
+
+## License
+
+MIT
