@@ -64,7 +64,7 @@ newgrp wireshark
 
 - 如果是支持监听模式的网卡，可以直接运行
 
-- 如果刚好是 Rtl8192 + Raspberry Pi ，需要先卸载 `rtl8192` 驱动，再加载 `RTL8188` 驱动
+- 如果刚好在使用 `rtl8188` + Raspberry Pi ，需要先卸载 `rtl8192` 驱动，再加载 `rtl8188` 驱动
 
     ```bash
     #!/usr/bin/env bash
